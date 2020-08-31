@@ -4,6 +4,8 @@ include 'includes/database.php';
 
 if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 
+    $conn = getDB();
+
     $sql = "SELECT *
         FROM article
         WHERE id = " . $_GET['id'];
@@ -30,8 +32,8 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
         <ul>
                 <li>
                     <article>
-                        <h2><?= $article['title']; ?></h2>
-                        <p><?= $article['content']; ?></p>
+                        <h2><?= htmlspecialchars($article['title']); ?></h2>
+                        <p><?= htmlspecialchars($article['content']); ?></p>
                     </article>
                 </li>
         </ul>
